@@ -40,7 +40,7 @@ body {
   color: #ffffff !important;
   font-size: 1.19em !important;
   font-weight: bold;
-  background: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)), url('@/assets/fundo2.jpg') center center / cover no-repeat fixed;
+  background: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)), url('@/assets/fundo.jpg') center center / cover no-repeat fixed;
 }
 
 body, html {
