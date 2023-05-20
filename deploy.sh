@@ -73,7 +73,7 @@ ssh -o StrictHostKeyChecking=no -i herzeg.pem $USER@$INSTANCE_PUBLIC_IP "bash -s
 
   cd \$CODE_DIR
   npm install
-  npm run build:prod
+  npm run build
   sudo cp -r dist/* /var/www/html/pi4
 ENDSSH
 fi
