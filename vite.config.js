@@ -5,15 +5,15 @@ import vue from '@vitejs/plugin-vue'
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  base: '/api4',
+  base: '/pi4',
   plugins: [vue()],
   resolve: {
     alias: {
       '@': fileURLToPath(new URL('./src', import.meta.url))
     }
   },
-  publicDir: '/api4', // Adicionando a propriedade publicDir
+  publicDir: '/pi4', // Adicionando a propriedade publicDir
   build: {
-    base: '/api4/' // Adicionando a propriedade base
+    base: '/pi4/' // Adicionando a propriedade base
   }
 })
