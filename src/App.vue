@@ -11,14 +11,10 @@ onMounted(() => {
   <nav class="navbar fixed-bottom navbar-light">
     <div class="container-fluid justify-content-around">
       <router-link to="/" class="btn btn-primary">
-        <svg class="bi" width="20" height="20" fill="currentColor">
-          <use xlink:href="node_modules/bootstrap-icons/bootstrap-icons.svg#house-door-fill" />
-        </svg>
+        <i class="bi bi-house-door-fill"></i>
       </router-link>
       <router-link to="/about" class="btn btn-primary">
-        <svg class="bi" width="20" height="20" fill="currentColor">
-          <use xlink:href="node_modules/bootstrap-icons/bootstrap-icons.svg#info-square-fill" />
-        </svg>
+        <i class="bi bi-info-square-fill"></i>
       </router-link>
     </div>
   </nav>
