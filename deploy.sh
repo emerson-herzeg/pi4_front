@@ -71,6 +71,14 @@ ssh -o StrictHostKeyChecking=no -i herzeg.pem $USER@$INSTANCE_PUBLIC_IP "bash -s
     )
   fi
 
+  # Install NVM
+  curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.38.0/install.sh | bash
+  # Source NVM to use it in this script
+  . ~/.nvm/nvm.sh
+  # Install specific version of Node.js and use it
+  nvm install 16.13.0
+  nvm use 16.13.0
+
   cd \$CODE_DIR
   rm -rf node_modules
   npm install
