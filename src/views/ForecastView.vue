@@ -2,6 +2,7 @@
   <div class="background">
     <div class="icon-container">
       <img :src="currentIcon" alt="" class="responsive-image" :class="{ spin: currentIcon === sunIcon, moveHorizontal: currentIcon === rainIcon }">
+      <p class="icon-text">{{ currentIcon === sunIcon ? 'A previsão é de sol!' : 'Parece que vai chover...' }}</p>
     </div>
   </div>
 </template>
@@ -14,6 +15,7 @@
 
 .icon-container {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   position: relative;
@@ -21,6 +23,12 @@
   left: 0;
   width: 100vw;
   height: 100vh;
+}
+
+.icon-text {
+  text-align: center;
+  font-size: 1.5em;
+  margin-top: 20px; /* adicione algum espaço entre a imagem e o texto */
 }
 
 @keyframes spin {
