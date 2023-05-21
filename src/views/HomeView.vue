@@ -1,8 +1,10 @@
 <template>
   <div class="text-center">
-    <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent porttitor massa efficitur mauris mattis, eu malesuada libero volutpat. Aliquam pulvinar nisi sed ultrices convallis. Duis bibendum tortor quis tortor iaculis, ut tristique eros vestibulum. Nulla vitae nibh tincidunt, porttitor odio sed, posuere lectus.</span>
     <div class="d-grid gap-2">
-      <router-link to="/forecast" class="btn btn-primary mt-5 btn-lg">Previsão</router-link>
+    <span>Esse site é parte do Projeto Integrador IV de 2023 da Universidade Virtual de São Paulo com o objetivo
+      de prever a ocorrência de chuvas utilizando dados de sensores instalados da cidade e analisados por um modelo
+      matemático complexo. Clique no botão abaixo para saber se irá chover ou não. Para mais informações clique no botão Saiba Mais. </span>
+      <router-link class="btn btn-primary mt-5 btn-lg" to="/forecast">Previsão</router-link>
     </div>
   </div>
 </template>
