@@ -1,7 +1,8 @@
 <template>
   <div class="background">
     <div class="icon-container">
-      <img v-if="!loading" :src="currentIcon" alt="" class="responsive-image" :class="{ spin: currentIcon === sunIcon, moveHorizontal: currentIcon === rainIcon }">
+      <img v-if="loading" :src="loadingIcon" alt="" class="loading-icon spinLoading">
+      <img v-else :src="currentIcon" alt="" class="responsive-image" :class="{ spin: currentIcon === sunIcon, moveHorizontal: currentIcon === rainIcon }">
       <p class="icon-text">{{ loading ? 'Aguarde...' : (currentIcon === sunIcon ? 'A previsão é de sol!' : 'Parece que vai chover...') }}</p>
     </div>
   </div>
@@ -10,6 +11,11 @@
 <style>
 .responsive-image {
   max-width: 75%; /* ajuste conforme necessário */
+  height: auto;
+}
+
+.loading-icon {
+  max-width: 50%; /* ajuste este valor conforme necessário */
   height: auto;
 }
 
@@ -49,11 +55,21 @@
 .moveHorizontal {
   animation: moveHorizontal 5s ease-in-out infinite;
 }
+
+@keyframes spinLoading {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.spinLoading {
+  animation: spin 4s linear infinite;
+}
 </style>
 
 <script>
 import sunIcon from '../assets/sun.png'
 import rainIcon from '../assets/rain.png'
+import loadingIcon from '../assets/loading.png'
 import { getInfluxDB, getForecast } from '../api/index'
 
 export default {
@@ -61,6 +77,7 @@ export default {
     return {
       sunIcon,
       rainIcon,
+      loadingIcon,
       currentIcon: '', // removido a chamada do método getRandomIcon
       loading: true
     }
