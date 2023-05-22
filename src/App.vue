@@ -13,7 +13,7 @@ onMounted(() => {
       <router-link to="/" class="btn btn-primary">
         <i class="bi bi-house-door-fill"></i>
       </router-link>
-      <router-link to="/about" class="btn btn-primary" title="Saiba Mais">
+      <router-link to="/about" class="btn btn-primary" title="Informações">
         <i class="bi bi-info-square-fill"></i>
       </router-link>
     </div>
