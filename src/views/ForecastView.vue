@@ -4,6 +4,24 @@
       <img v-if="loading" :src="loadingIcon" alt="" class="loading-icon spinLoading">
       <img v-else :src="currentIcon" alt="" class="responsive-image" :class="{ spin: currentIcon === sunIcon, moveHorizontal: currentIcon === rainIcon }">
       <p class="icon-text">{{ loading ? 'Aguarde...' : (currentIcon === sunIcon ? 'A previsão é de sol!' : 'Parece que vai chover...') }}</p>
+      <div v-if="!loading" style="width: 100%;" class="p-5">
+        <p><b>Últimos dados lidos:</b></p>
+        {{dia}}/{{mes}}/{{ano}}<br>
+        <table class="table table-bordered table-info">
+          <tr>
+            <td class="text-start">Temperatura</td>
+            <td class="text-end">{{this.temperatura}} &deg;C</td>
+          </tr>
+          <tr>
+            <td class="text-start">Humidade</td>
+            <td class="text-end">{{this.humidade}} %</td>
+          </tr>
+          <tr>
+            <td class="text-start">Pressão Atmosférica</td>
+            <td class="text-end">{{this.pressao}} hPa</td>
+          </tr>
+        </table>
+      </div>
     </div>
   </div>
 </template>
@@ -79,7 +97,13 @@ export default {
       rainIcon,
       loadingIcon,
       currentIcon: '', // removido a chamada do método getRandomIcon
-      loading: true
+      loading: true,
+      humidade: '',
+      temperatura: '',
+      pressao: '',
+      dia: '',
+      mes: '',
+      ano: ''
     }
   },
   methods: {
@@ -92,6 +116,12 @@ export default {
     getForecast()
         .then(response => {
           console.log(response)
+          this.humidade = response.data.BME280_hum
+          this.temperatura = response.data.BME280_temp
+          this.pressao = response.data.BME280_pres
+          this.dia = response.data.dia
+          this.mes = response.data.mes
+          this.ano = response.data.ano
           this.setWeatherIcon(response.data.previsao)
           this.loading = false
         })
