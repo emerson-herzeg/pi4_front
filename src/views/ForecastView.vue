@@ -70,7 +70,7 @@
 import sunIcon from '../assets/sun.png'
 import rainIcon from '../assets/rain.png'
 import loadingIcon from '../assets/loading.png'
-import { getInfluxDB, getForecast } from '../api/index'
+import { getForecast } from '../api/index'
 
 export default {
   data() {
@@ -89,16 +89,11 @@ export default {
     }
   },
   created() {
-    // Depois que o componente é criado, definimos currentIcon
-    getInfluxDB()
+    getForecast()
         .then(response => {
-          console.log(response.data)
-          getForecast(response.data)
-              .then(response => {
-                console.log(response)
-                this.setWeatherIcon(response.data.previsao)
-                this.loading = false
-              })
+          console.log(response)
+          this.setWeatherIcon(response.data.previsao)
+          this.loading = false
         })
   }
 }
