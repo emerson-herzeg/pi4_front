@@ -1,8 +1,8 @@
 <template>
   <div class="background">
     <div class="icon-container">
-      <img :src="currentIcon" alt="" class="responsive-image" :class="{ spin: currentIcon === sunIcon, moveHorizontal: currentIcon === rainIcon }">
-      <p class="icon-text">{{ currentIcon === sunIcon ? 'A previsão é de sol!' : 'Parece que vai chover...' }}</p>
+      <img v-if="!loading" :src="currentIcon" alt="" class="responsive-image" :class="{ spin: currentIcon === sunIcon, moveHorizontal: currentIcon === rainIcon }">
+      <p class="icon-text">{{ loading ? 'Aguarde...' : (currentIcon === sunIcon ? 'A previsão é de sol!' : 'Parece que vai chover...') }}</p>
     </div>
   </div>
 </template>
@@ -54,23 +54,35 @@
 <script>
 import sunIcon from '../assets/sun.png'
 import rainIcon from '../assets/rain.png'
+import { getInfluxDB, getForecast } from '../api/index'
+
 export default {
   data() {
     return {
       sunIcon,
       rainIcon,
-      currentIcon:this.getRandomIcon() // Altere isso para rainIcon para exibir a nuvem
+      currentIcon: '', // removido a chamada do método getRandomIcon
+      loading: true
     }
   },
   methods: {
-    getRandomIcon() {
-      // Este método seleciona aleatoriamente um dos ícones
-      return Math.random() < 0.5 ? this.sunIcon : this.rainIcon;
+    setWeatherIcon(previsao) {
+      // Este método ajusta o ícone de acordo com o valor da previsão
+      this.currentIcon = previsao === 1 ? this.rainIcon : this.sunIcon;
     }
   },
   created() {
     // Depois que o componente é criado, definimos currentIcon
-    this.currentIcon = this.getRandomIcon();
+    getInfluxDB()
+        .then(response => {
+          console.log(response.data)
+          getForecast(response.data)
+              .then(response => {
+                console.log(response)
+                this.setWeatherIcon(response.data.previsao)
+                this.loading = false
+              })
+        })
   }
 }
 </script>
