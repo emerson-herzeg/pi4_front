@@ -13,7 +13,7 @@
             <td class="text-end">{{this.temperatura}} &deg;C</td>
           </tr>
           <tr>
-            <td class="text-start">Humidade</td>
+            <td class="text-start">Umidade</td>
             <td class="text-end">{{this.humidade}} %</td>
           </tr>
           <tr>
