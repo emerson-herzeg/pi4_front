@@ -30,6 +30,7 @@
 .responsive-image {
   max-width: 75%; /* ajuste conforme necessário */
   height: auto;
+  max-height: 50vh;
 }
 
 .loading-icon {
@@ -47,6 +48,7 @@
   left: 0;
   width: 100vw;
   height: 100vh;
+  max-width: 800px;
 }
 
 .icon-text {
